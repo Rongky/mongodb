@@ -13,20 +13,20 @@ RUN \
   echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list && \
   apt-get update && \
   apt-get install -y mongodb-org && \
-#  mkdir -p /data/db
+  mkdir -p /data/db
 
 # Define mountable directories.
-#VOLUME ["/data"]
+VOLUME ["/data"]
 
 # Define working directory.
-#WORKDIR /data
+WORKDIR /data
 
 # Define default command.
-#CMD ["mongod"]
+CMD ["mongod"]
 
 # Expose ports.
 #   - 27017: process
 #   - 28017: http
-#EXPOSE 27017
-#EXPOSE 28017
+EXPOSE 27017
+EXPOSE 28017
 ENTRYPOINT ["mongod", "-f", "/data/mongodb.conf"]
